@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.app {
+.box {
   width: 402px;
   height: 469px;
   background-color: white;
@@ -86,4 +86,48 @@ input {
   border-radius: 8px;
   background: #2F80ED;
   margin: 44px auto;
+}
+
+.check-icon {
+  display: block;
+  width: 35px;
+  height: 35px;
+  margin: 40px auto 12px auto;
+  background-image: url('assets/check.svg');
+}
+
+.imgContainer {
+  width: 340px;
+  height: 225px;
+  margin: 0 auto;
+}
+
+.resultContainer {
+  width: 340px;
+  height: 34px;
+  background-color: #F6F8FB;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  margin: 25px auto;
+}
+
+.linkContainer {
+  white-space: nowrap;
+  width: 240px;
+  padding: 11px 7px;
+  font-size: 8px;
+  color: black;
+  margin: 0;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultContainer button {
+  background-color: #2F80ED;
+  color: white;
+  font-size: 8px;
+  padding: 12px 23px;
+  border-radius: 8px;
+  border: none;
 }
