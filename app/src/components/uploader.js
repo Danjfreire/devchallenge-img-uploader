@@ -1,13 +1,40 @@
-import { Component } from 'react'
+import React from 'react'
+import { app } from '../environment/firebase'
 
-export class Uploader extends Component {
+
+export class Uploader extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             isUploading: false,
-            hasUploaded: true,
+            hasUploaded: false,
+            downloadUrl: '',
         }
+    }
+
+    uploadFile(file) {
+        console.log('uploading');
+        this.setState({isUploading : true})
+        const storage = app.storage()
+            .ref()
+            .child('public/' + file.name)
+            .put(file)
+            .then( snapshot => {
+                console.log(snapshot);
+                console.log('uploaded image successfully')
+                snapshot.ref.getDownloadURL()
+                .then(url => {
+                    this.setState({
+                        isUploading: false, hasUploaded: true, downloadUrl:url
+                    });
+                })
+            } );
+    }
+
+    handleFileChange(event) {
+        const file = event.target.files[0];
+        this.uploadFile(file);
     }
 
     render() {
@@ -19,10 +46,10 @@ export class Uploader extends Component {
                         <i className="check-icon"></i>
                         <h1 className="header">Uploaded Succesfully!</h1>
                         <div className="imgContainer">
-                            <img className=""></img>
+                            <img src={this.state.downloadUrl} className="uploadedImage"></img>
                         </div>
                         <div className="resultContainer">
-                            <div className="linkContainer">https://www.figma.com/file/NxbZm3CAovYh89dFXe7EOw/Image-Uploader?node-id=0%3A1</div>
+                            <div className="linkContainer">{this.state.downloadUrl}</div>
                             <button>Copy Link</button>
                         </div>
                     </div>
@@ -49,8 +76,8 @@ export class Uploader extends Component {
                 <p className="">File should be Jpeg, Png...</p>
 
                 <form className="uploader">
-                    <div className="logo" onDrop=""></div>
-                    <input type="file" id="fileElem" accept="image/*" />
+                    <div className="logo"></div>
+                    <input type="file" id="fileElem" accept="image/*" onChange={(event => { this.handleFileChange(event) })} />
                     <p>Drag & drop your image here</p>
 
                 </form>

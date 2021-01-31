@@ -131,3 +131,8 @@ input {
   border-radius: 8px;
   border: none;
 }
+
+.uploadedImage {
+  width: 100%;
+  height: 100%;
+}
