@@ -16,7 +16,7 @@ export class Uploader extends React.Component {
     uploadFile(file) {
         console.log('uploading');
         this.setState({isUploading : true})
-        const storage = app.storage()
+        app.storage()
             .ref()
             .child('public/' + file.name)
             .put(file)
@@ -46,7 +46,7 @@ export class Uploader extends React.Component {
                         <i className="check-icon"></i>
                         <h1 className="header">Uploaded Succesfully!</h1>
                         <div className="imgContainer">
-                            <img src={this.state.downloadUrl} className="uploadedImage"></img>
+                            <img src={this.state.downloadUrl} alt="uploaded" className="uploadedImage"></img>
                         </div>
                         <div className="resultContainer">
                             <div className="linkContainer">{this.state.downloadUrl}</div>
