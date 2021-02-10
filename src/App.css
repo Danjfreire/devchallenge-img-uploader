@@ -115,7 +115,7 @@ input {
   white-space: nowrap;
   width: 240px;
   padding: 11px 7px;
-  font-size: 8px;
+  font-size: 10px;
   color: black;
   margin: 0;
   float: left;
@@ -126,10 +126,16 @@ input {
 .resultContainer button {
   background-color: #2F80ED;
   color: white;
-  font-size: 8px;
-  padding: 12px 23px;
+  font-size: 11px;
+  height: 100%;
+  width : 25%;
   border-radius: 8px;
   border: none;
+}
+
+.resultContainer button:hover {
+  cursor: pointer;
+  background-color: rgba(189, 189, 189, 1);;
 }
 
 .uploadedImage {
